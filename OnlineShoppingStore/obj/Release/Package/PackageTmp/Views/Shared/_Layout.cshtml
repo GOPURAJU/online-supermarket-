@@ -1,0 +1,479 @@
+﻿@using OnlineShoppingStore.Models.Home;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/MyMainLayOut.css" rel="stylesheet" />
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="logo">
+                    <h1><a href="@Url.Action("Index","Home")">Online <span>Super Market</span></a></h1>
+                    <p>My Shop</p>
+                </div>
+
+            </div>
+
+
+            <a href="#" class="login-btn">
+                <i class="fa fa-user-o">
+                </i>
+                Hello!
+                My Profile
+                <i class="fa fa-angle-down"></i>
+            </a>
+
+
+
+
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                @*<div class="account">
+                       <ul>
+                           <li>
+                               <div class="hidden-xs">
+                                   <h4><a>Call</a></h4>
+                                   <p>018##-######</p>
+                               </div>
+
+                               <div class="visible-xs">
+
+                                   <p>018##-######</p>
+                               </div>
+
+                           </li>
+                       </ul>
+
+                    </div>*@
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a data-toggle="modal" class="dropdown-toggle" href="#" data-target="#loginModal">Login</a>
+                    </li>
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Cart <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if (Session["cart"] != null)
+                            {
+                                foreach (Item item in (List<Item>)Session["cart"])
+                                {
+                                    <li>
+                                        <a href="@Url.Action("RemoveFromCart", "Home", new { productId=item.Product.ProductId})">@item.Product.ProductName (@item.Quantity) <i class="fa fa-times"></i></a>
+                                    </li>
+                                }
+                            }
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Checkout","Home")">Checkout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div id="themeSlider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+                <li data-target="#themeSlider" data-slide-to="1"></li>
+                <li data-target="#themeSlider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="imgOverlay"></div>
+                    <img style="height:320px;width:100%" src="~/Images/SuperMarket3.jpg" alt="First slide">
+
+                </div>
+
+                <div class="item">
+                    <div class="imgOverlay"></div>
+                    <img style="height:320px;width:100%" src="../Images/vegetables.jpg" alt="Second slide">
+
+                </div>
+                <div class="item">
+                    <div class="imgOverlay"></div>
+                    <img style="height:320px;width:100%" src="../Images/shopping.jpg" alt="Third slide">
+
+                </div>
+            </div>
+            <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+                <span class="fa fa-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#themeSlider" data-slide="next">
+                <span class="fa fa-chevron-right"></span>
+            </a>
+
+        </div>
+
+
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="nav-menus">
+
+                    <ul class="nav nav-pills">
+                        <li class="active"><a style="border-radius:initial;" href="@Url.Action("Index","Home")">Home</a></li>
+                        <li><a style="border-radius:initial;" href="@Url.Action("ContactUs","Home")">Contact</a></li>
+                        <li><a style="border-radius:initial;" href="@Url.Action("About","Home")">About</a></li>
+                        <li>
+                            <!--<a style="border-radius:initial;" href="#">Category</a>
+                                                <ul class="dropdown-menu">
+                                <li>Vegitables</li>
+                                <li>Fruits</li>
+                                <li>Grocessories</li>
+                                <li>Milk Products</li>
+                                <li>Clothe</li>
+                            </ul>-->
+                            <div class="dropdown">
+                                <button class="dropdown-toggle btn" type="button" data-toggle="dropdown">
+                                    Category
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Index","Home")">Vegetables</a></li>
+                                    <li><a href="@Url.Action("Index","Home")">Fruits</a></li>
+                                    <li><a href="@Url.Action("Index","Home")">Grocessories</a></li>
+                                    <li><a href="@Url.Action("Index","Home")">Milk Products</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+        @RenderBody()
+        <hr />
+        <footer>
+            <div class="row">
+                <div class="col-md-12 copyright">
+
+                    <div class="col-md-6 col-sm-6 copyright-left">
+                        <p>&copy; @DateTime.Now.Year - OnlineSuperMarket. All right reserved.</p>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 copyright-right">
+
+                        <ul class="list-unstyled list-social">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </footer>
+    </div>
+
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign In</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <h2 class="text-center">Log in</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" required="required" id="txtUserName">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" required="required" id="txtPassword">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block" onclick="UserLogin()">Log in</button>
+                        </div>
+                        <div class="form-group">
+                            <label class="pull-left checkbox-inline"><input type="checkbox" style="margin-top:auto"> Remember me</label>
+                            <a href="#" class="pull-right dropdown-toggle" data-toggle="modal" data-target="#ForgotModal" data-dismiss="modal">Forgot Password?</a>
+                        </div>
+                    </form>
+                    <p class="text-center"><a href="#" data-toggle="modal" class="dropdown-toggle" data-target="#RegisterModal" data-dismiss="modal">Create an Account</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div id="RegisterModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign UP</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        @*<h2>Register</h2>
+                            <p class="hint-text">Create your account. It's free and only takes a minute.</p>*@
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6"><input type="text" class="form-control" id="txtFirstname" name="first_name" placeholder="First Name" required="required"></div>
+                                <div class="col-xs-6"><input type="text" class="form-control" id="txtLastname" name="last_name" placeholder="Last Name" required="required"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" minlength="10" maxlength="10" name="phone" id="txtPhone" class="form-control" placeholder="Phone Number" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="txtEmail" name="email" placeholder="Email" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="txtPassword" name="password" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="textConfmpwd" name="confirm_password" placeholder="Confirm Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg btn-block" id="btnRegister" onclick="save()">Register Now</button>
+                        </div>
+                    </form>
+
+                    <div class="text-center">Already have an account? <a data-toggle="modal" class="dropdown-toggle" href="#" data-target="#loginModal" data-dismiss="modal">Sign in</a></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="ForgotModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update your New Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                </div>
+                                <div class="form-group ">
+                                    <input type="email" value="" class="form-control" placeholder="Email" id="txtemail">
+                                </div>
+
+                                <div class="form-group ">
+                                    <input type="password" value="" class="form-control" placeholder="New Password" id="txtpassword">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" value="" class="form-control" placeholder="Confirm Password" required id="txtconfirmpwd">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block" onclick="resetpassword()">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--<div id="ResetModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">-->
+
+            <!-- Modal content-->
+            <!--<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Reset Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                </div>
+                                <div class="form-group ">
+                                    <input type="email" value="" class="form-control" placeholder="Email" id="txtemail">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block" onclick="resetpassword()">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+  //  $(document).ready(function () {
+
+        
+
+            //$.ajax({
+            //    type: "POST",
+            //    url: '/Account/Userregistration',
+            //    data: JSON.stringify(registerdata),
+            //    dataType: "json",
+            //    contentType: "application/json; charset=utf-8",
+            //    success: function (data) {
+            //        if (data != null) {
+            //            //window.location.href('/');
+            //            alertMessage('Registration done Successfully ..');
+            //        }
+            //    },
+            //    error: function () {
+            //        alertMessage('Registration Failed ..');
+            //    }
+            //});
+       
+   // });
+    $('#btnRegister').click(function () {        
+        debugger;
+
+        var firstname = $('#txtFirstname').val();
+        var lastname = $('#txtLastname').val();
+        var phone = $('#txtPhone').val();
+        var email = $('#txtEmail').val();
+        var password = $('#txtPassword').val();
+        var confirmpwd = $('#textConfmpwd').val();
+        var registerdata =
+        {
+            FirstName: firstname, LastName: lastname, Phone: phone, Email: email, Password: password, ConfirmPassword: confirmpwd
+
+        }
+        debugger;
+        $.ajax({           
+            type: "POST",
+            url: "/Account/UserRegistration",
+            data: JSON.stringify(registerdata),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (result) {
+                debugger;
+               
+                if (result == true) {
+                    alert('Registration Done Successfully.Please Check your Mail...');
+                    //window.location.href="/Home/Index";
+                }
+                else {
+                    alert('Registration Failed...');
+                }
+            },            
+            error: function () {
+                alertMessage('Some technical error,Please contact your technical team...');
+            }
+        });
+    });
+    function resetpassword() {
+        debugger;
+        var email = $('#txtemail').val();
+        var password = $('#txtpassword').val();
+        var confirmpwd = $('#txtconfirmpwd').val(); 
+
+       var resetData =
+       {
+           Email: email, Password: password, ConfirmPassword: confirmpwd
+
+       }
+       $.ajax({
+                type: "POST",
+               url: "/Account/Resetpassword",
+                data: JSON.stringify(resetData),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                cache: false,
+                success: function (data) {
+                alertMessage('Your password Reset Successfully..');
+                },          
+                error: function () {
+                alertMessage('Some technical error,Please contact your technical team..');
+                }
+       });
+    }
+    function UserLogin() {
+        debugger;
+        var username = $('#txtUserName').val();
+        var password = $('#txtPassword').val();
+
+        var loginData =
+        {
+             UserName:username,Password: password
+
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Account/UserLogin",
+            data: JSON.stringify(loginData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (result) {                
+                if (result == true) {                    
+                    alert('Login Successfully..');
+                } else {
+                    alert('Login failed..');
+                    
+                }
+            },
+            error: function () {
+                alertMessage('Some technical error,Please contact your technical team..');
+            }
+        });
+    }
+
+
+   
+
+</script>

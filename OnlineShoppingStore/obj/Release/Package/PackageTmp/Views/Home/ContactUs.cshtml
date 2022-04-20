@@ -1,0 +1,116 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml"; ;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text], select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+        }
+
+        input[type=submit] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+            input[type=submit]:hover {
+                background-color: #45a049;
+            }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!--<div>
+        using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td style="width: 80px">Name:</td>-->
+    @*<td>@Html.TextBoxFor(model => model.Name)</td>*@
+    <!--</tr>
+    <tr>
+        <td>Subject:</td>-->
+    @*<td>@Html.TextBoxFor(model => model.)</td>*@
+    <!--</tr>
+    <tr>
+        <td>Email:</td>-->
+    @*<td>@Html.TextBoxFor(model => model.Email)</td>*@
+    <!--</tr>
+    <tr>
+        <td>Body:</td>-->
+    @*<td>@Html.TextAreaFor(model => model.Body, new { rows = "3", cols = "20" })</td>*@
+    <!--</tr>
+    <tr>
+        <td></td>-->
+    @*<td>@Html.TextBoxFor(model => model.Attachment, new { type = "file" })</td>*@
+    <!--</tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value="Send" /></td>
+                </tr>
+            </table>
+            <br />
+            <span style="color:green">ViewBag.Message</span>
+        }
+    </div>-->
+
+
+    <h3>Contact Form</h3>
+
+    <div class="container">
+        <form action="/action_page.php">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+            <label for="country">Country</label>
+            <select id="country" name="country">
+                <option value="australia">Australia</option>
+                <option value="canada">Canada</option>
+                <option value="usa">USA</option>
+            </select>
+
+            <label for="subject">Subject</label>
+            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.0.20/tinymce.min.js"></script>
+    <script type="text/javascript">
+        tinymce.init({ selector: 'textarea', width: 300 });
+    </script>
+</body>
+</html>

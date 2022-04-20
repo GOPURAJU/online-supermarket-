@@ -1,0 +1,786 @@
+﻿@using OnlineShoppingStore.Models.Home;
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/content/mymainlayout.css" rel="stylesheet" />
+    <link href="~/StyleSheet1.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <style>
+        .carousel-inner .imgOverlay {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            /*background-color: rgba(6, 28, 38, 0.5);*/
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 92px;
+        }
+
+        .logo {
+            margin-bottom: 0;
+        }
+
+        .mainheader {
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: #0495D6;
+            font-size: 13px;
+            width: 137;
+            height: 54px;
+        }
+
+        .button2 {
+            background-color: red;
+            font-size: 13px;
+            width: 137;
+            height: 54px;
+        }
+
+        .col-lg-3 {
+            padding-left: 41px;
+            background-color: black;
+            color: white;
+        }
+
+        .container.hh {
+            background-color: black;
+            color: white;
+        }
+
+        .bg-dark {
+            background-color: #212529 !important;
+        }
+
+        body {
+            /*  background-image: url(../../Images/20440533.jpg);
+            /* object-fit: none; */
+            /* image-rendering: pixelated; */
+            /*background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+        }*/
+
+            body
+
+        {
+            background-color: floralwhite;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .p-3 {
+            padding: 1rem !important;
+        }
+
+        .justify-content-lg-start {
+            justify-content: flex-start !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        .d-flex {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            max-height: 80px;
+        }
+
+        .logo {
+            margin-bottom: 0;
+        }
+
+        .mainheader {
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+
+        .button {
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+        .button1 {
+            background-color: #0495D6;
+            font-size: 13px;
+            width: 137;
+            height: 54px;
+        }
+
+        .button2 {
+            background-color: red;
+            font-size: 13px;
+            width: 137;
+            height: 54px;
+        }
+
+        .col-lg-3 {
+            padding-left: 41px;
+            background-color: black;
+            color: white;
+        }
+
+        .container.hh {
+            background-color: black;
+            color: white;
+        }
+
+        .bg-dark {
+            background-color: #212529 !important;
+        }
+
+        .text-white {
+            color: #fff !important;
+        }
+
+        .p-3 {
+            padding: 1rem !important;
+        }
+
+        .justify-content-lg-start {
+            justify-content: flex-start !important;
+        }
+
+        .align-items-center {
+            align-items: center !important;
+        }
+
+        img.width-100 {
+            width: 100%;
+        }
+
+        .carousel-item {
+            max-height: 500px;
+        }
+
+        .bb {
+            background-color: black !important;
+            color: white !important;
+        }
+
+        .col-md-3 {
+            flex: 0 0 auto;
+            width: 25%;
+        }
+
+        .card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+
+        input.form-control.form-control-dark {
+            width: 392px !important;
+        }
+
+        .form-control {
+            height: 0px !important;
+        }
+        .buttonload {
+            background-color: #04AA6D; /* Green background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 12px 24px; /* Some padding */
+            font-size: 16px; /* Set a font-size */
+        }
+
+        /* Add a right margin to each icon */
+        .fa {
+            margin-left: -12px;
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="logo">
+                    <h1><a href="@Url.Action("Index","Home")">Online <span>Super Market</span></a></h1>
+                    <p>My Shop</p>
+                </div>
+
+            </div>
+
+
+          
+
+
+
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                @*<div class="account">
+               <ul>
+                   <li>
+                       <div class="hidden-xs">
+                           <h4><a>Call</a></h4>
+                           <p>018##-######</p>
+                       </div>
+
+                       <div class="visible-xs">
+
+                           <p>018##-######</p>
+                       </div>
+
+                   </li>
+               </ul>
+
+            </div>*@
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="liLogin">
+                        <a data-toggle="modal" class="dropdown-toggle btn btn-outline-dark me-2 btn-primary" href="#" data-target="#loginModal">Login</a>
+                    </li>
+                    <li class="liProfile" style="display:none">
+                        <a href="#" class="login-btn" ><i class="fa fa-user-o"></i> Hello!My Profile<i class="fa fa-angle-down"></i></a>
+
+                    </li>
+                   
+                    <li class="dropdown">
+
+                        <a data-toggle="dropdown" class="dropdown-toggle btn btn-warning" href="#">Cart <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            @if (Session["cart"] != null)
+                            {
+                                foreach (Item item in (List<Item>)Session["cart"])
+                                {
+                                    <li>
+                                        <a href="@Url.Action("RemoveFromCart", "Home", new { productId=item.Product.ProductId})">@item.Product.ProductName (@item.Quantity) <i class="fa fa-times"></i></a>
+                                    </li>
+                                }
+                            }
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Checkout","Home")">Checkout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="nav-menus">
+
+                    <ul class="nav nav-pills">
+                        <li class="active"><a style="border-radius:initial;" href="@Url.Action("Index","Home")">Home</a></li>
+                        <li><a style="border-radius:initial;" href="@Url.Action("ContactUs","Home")">Contact</a></li>
+                        <li><a style="border-radius:initial;" href="@Url.Action("About","Home")">About</a></li>
+                        <li>
+                            <!--<a style="border-radius:initial;" href="#">Category</a>
+                                            <ul class="dropdown-menu">
+                            <li>Vegitables</li>
+                            <li>Fruits</li>
+                            <li>Grocessories</li>
+                            <li>Milk Products</li>
+                            <li>Clothe</li>
+                        </ul>-->
+                            <div class="dropdown">
+                                <button class="dropdown-toggle btn" type="button" data-toggle="dropdown">
+                                    Category
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a href="@Url.Action("Index","Home")">Vegetables</a></li>
+                                    <li><a href="@Url.Action("Index","Home")">Fruits</a></li>
+                                    <li><a href="@Url.Action("Index","Home")">Grocessories</a></li>
+                                    <li><a href="@Url.Action("Index","Home")">Milk Products</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div id="themeSlider" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#themeSlider" data-slide-to="0" class="active"></li>
+                <li data-target="#themeSlider" data-slide-to="1"></li>
+                <li data-target="#themeSlider" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="item active">
+                    <div class="imgOverlay"></div>
+                    <img style="height:320px;width:100%" src="~/Images/SuperMarket3.jpg" alt="First slide">
+
+                </div>
+
+                <div class="item">
+                    <div class="imgOverlay"></div>
+                    <img style="height:320px;width:100%" src="../Images/vegetables.jpg" alt="Second slide">
+
+                </div>
+                <div class="item">
+                    <div class="imgOverlay"></div>
+                    <img style="height:320px;width:100%" src="../Images/shopping.jpg" alt="Third slide">
+
+                </div>
+            </div>
+            <a class="left carousel-control" href="#themeSlider" data-slide="prev">
+                <span class="fa fa-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#themeSlider" data-slide="next">
+                <span class="fa fa-chevron-right"></span>
+            </a>
+            <input type="hidden" id="AdminChck"value="ViewData["ISADMIN"]" />
+         </div>
+
+
+
+
+
+
+        @RenderBody()
+        <div class="container">
+            <div class="bb">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <h2>About Supermarket</h2>
+                        <p>tory</p>
+                        <p>Mission statement </p>
+                        <p>leadership</p>
+                        <p>MRPL values</p>
+                        <p>Quality framework</p>
+                        <p>Demo</p>
+                        <p>Blog</p>
+
+                    </div>
+                    <div class="col-lg-3">
+                        <h2>Our Format</h2>
+                        <p>hypermart</p>
+                        <p>supermart</p>
+                        <p>RPL values</p>
+                        <p>Quality framework</p>
+
+                        <p>Demo</p>
+                        <p>Blog</p>
+                        <p>values</p>
+
+
+                    </div>
+                    <div class="col-lg-3">
+                        <h2>Categories</h2>
+                        <p>
+                            Grocery Fresh
+                        </p>
+
+                        <p> Grocery Food</p>
+                        <p>Grocery Non Food</p>
+                        <p>Grocery Lifestyle</p>
+                        <p>
+                            Our Brands
+                        </p>
+                        <p>es</p>
+                        <p>Quality framework</p>
+
+
+                    </div>
+                    <div class="col-lg-3">
+
+                        <h2>Order Online</h2>
+                        <h5>Get in Touch</h5>
+                        <p>Store Locator</p>
+                        <p>
+
+                            Privacy Policy
+                        </p>
+                        <p>Disclaimer</p>
+                        <p> Terms & Conditions</p>
+                        <p> FAQ</p>
+                        <p>MRPL values</p>
+                    </div>
+                </div>
+                <hr />
+                <div class="row copyright">
+
+                    <div class="col-md-6 col-sm-6 copyright-left">
+                        <p>&copy; @DateTime.Now.Year - OnlineSuperMarket. All right reserved.</p>
+                    </div>
+                    <div class="col-md-6 col-sm-6 copyright-right">
+
+                        <ul class="list-unstyled list-social">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <hr />
+        @*<footer>
+            <div class="row">
+                <div class="col-md-12 copyright">
+
+                    <div class="col-md-6 col-sm-6 copyright-left">
+                        <p>&copy; @DateTime.Now.Year - OnlineSuperMarket. All right reserved.</p>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 copyright-right">
+
+                        <ul class="list-unstyled list-social">
+                            <li><a href="#" target="_blank"><i class="fa fa-facebook-square"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </footer>*@
+    </div>
+
+    <div id="loginModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign In</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <h2 class="text-center">Log in</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Username" required="required" id="txtUserName">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Password" required="required" id="txtPassword">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block" onclick="UserLogin()">Log in</button>
+                        </div>
+                        <div class="form-group">
+                            <label class="pull-left checkbox-inline"><input type="checkbox" style="margin-top:auto"> Remember me</label>
+                            <a href="#" class="pull-right dropdown-toggle" data-toggle="modal" data-target="#ForgotModal" data-dismiss="modal">Forgot Password?</a>
+                        </div>
+                    </form>
+                    <p class="text-center"><a href="#" data-toggle="modal" class="dropdown-toggle" data-target="#RegisterModal" data-dismiss="modal">Create an Account</a></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <div id="RegisterModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Sign UP</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        @*<h2>Register</h2>
+        <p class="hint-text">Create your account. It's free and only takes a minute.</p>*@
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-6"><input type="text" class="form-control" id="txtFirstname" name="first_name" placeholder="First Name" required="required"></div>
+                                <div class="col-xs-6"><input type="text" class="form-control" id="txtLastname" name="last_name" placeholder="Last Name" required="required"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="number" minlength="10" maxlength="10" name="phone" id="txtPhone" class="form-control" placeholder="Phone Number" required="required" />
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control" id="txtEmail" name="email" placeholder="Email" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="txtPassword" name="password" placeholder="Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" id="textConfmpwd" name="confirm_password" placeholder="Confirm Password" required="required">
+                        </div>
+                        <div class="form-group">
+                            <label for="IsActive" class="col-sm-2 col-form-label">IsActive</label>
+                            <div class="form-check col-sm-10">
+                                <input class="form-check-input" type="checkbox" value="true" id="IsActive">
+                                <input type="hidden" id="hfIsActive" name="IsActive" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-lg btn-block buttonload" id="btnRegister" onclick="save()"><i class="fa fa-circle-o-notch fa-spin btnloader d-none"></i>Register Now</button>
+                            
+                                
+                            
+                        </div>
+                        
+                    </form>
+
+                    <div class="text-center">Already have an account? <a data-toggle="modal" class="dropdown-toggle" href="#" data-target="#loginModal" data-dismiss="modal">Sign in</a></div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div id="ForgotModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Update your New Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                </div>
+                                <div class="form-group ">
+                                    <input type="email" value="" class="form-control" placeholder="Email" id="txtemail">
+                                </div>
+
+                                <div class="form-group ">
+                                    <input type="password" value="" class="form-control" placeholder="New Password" id="txtpassword">
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="password" value="" class="form-control" placeholder="Confirm Password" required id="txtconfirmpwd">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block" onclick="resetpassword()">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--<div id="ResetModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">-->
+    <!-- Modal content-->
+    <!--<div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Reset Password</h4>
+                </div>
+                <div class="modal-body">
+                    <form method="post">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="form-group">
+                                </div>
+                                <div class="form-group ">
+                                    <input type="email" value="" class="form-control" placeholder="Email" id="txtemail">
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-success btn-lg btn-block" onclick="resetpassword()">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>-->
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.btnloader').hide();
+     });
+    $('#btnRegister').click(function () {
+        debugger;
+        $('.btnloader').show();
+        var firstname = $('#txtFirstname').val();
+        var lastname = $('#txtLastname').val();
+        var phone = $('#txtPhone').val();
+        var email = $('#txtEmail').val();
+        var password = $('#txtPassword').val();
+        var confirmpwd = $('#textConfmpwd').val();
+        var isAdmin = $("#IsActive").val()
+
+        var registerdata =
+        {
+            FirstName: firstname, LastName: lastname, Phone: phone, Email: email, Password: password, ConfirmPassword: confirmpwd, IsAdmin: isAdmin
+
+        }
+        debugger;
+        $.ajax({
+            type: "POST",
+            url: "/Account/UserRegistration",
+            data: JSON.stringify(registerdata),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (result) {
+                debugger;
+                if (result == true) {
+                    
+                    alert('Registration Done Successfully.Please Check your Mail...');
+                    $('.btnloader').hide();
+                    $('#RegisterModal').show()
+                    //window.location.href="/Home/Index";
+                }
+                else {
+                    alert('Registration Failed...');
+                    $('#RegisterModal').hide()
+                }
+            },
+            error: function () {
+                alertMessage('Some technical error,Please contact your technical team...');
+            }
+        });
+    });
+    function resetpassword() {
+        debugger;
+        var email = $('#txtemail').val();
+        var password = $('#txtpassword').val();
+        var confirmpwd = $('#txtconfirmpwd').val();
+
+        var resetData =
+        {
+            Email: email, Password: password, ConfirmPassword: confirmpwd
+
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Account/Resetpassword",
+            data: JSON.stringify(resetData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (data) {
+                alertMessage('Your password Reset Successfully..');
+            },
+            error: function () {
+                alertMessage('Some technical error,Please contact your technical team..');
+            }
+        });
+    }
+    function UserLogin() {
+        debugger;
+        var username = $('#txtUserName').val();
+        var password = $('#txtPassword').val();
+
+        var loginData =
+        {
+            UserName: username, Password: password
+
+        }
+        $.ajax({
+            type: "POST",
+            url: "/Account/UserLogin",
+            data: JSON.stringify(loginData),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (result) {
+                if (result == true) {
+                    btnloader()
+                    alert('Login Successfully..');
+                   /* if (AdminChck == true) {*/
+                        window.location.href = "/Admin/Dashboard";
+                    /*} else {*/
+                        $('.liLogin').hide();
+                        $('.liProfile').show();
+                   // }                    
+                } 
+                else {
+                    alert('Login failed..');
+                }
+            },
+            error: function () {
+                alertMessage('Some technical error,Please contact your technical team..');
+            }
+        });
+    }
+
+
+
+
+</script>
